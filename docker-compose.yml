@@ -1,0 +1,19 @@
+version: '20.0'
+services:
+  express:
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - mongo1
+  mongo1:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAvME=root
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+    volumes:
+      - mongo_data:/database/db
+volumes:
+  mongo_data:
